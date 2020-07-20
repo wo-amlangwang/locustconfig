@@ -20,15 +20,15 @@ def find_json_end(json_parts, start_index):
     index = start_index
     while True:
         for c in json_parts[index]:
-            if c is '{':
+            if c == '{':
                 curly_bracket_count += 1
-            if c is '[':
+            if c == '[':
                 square_bracket_count += 1
-            if c is '}':
+            if c == '}':
                 curly_bracket_count -= 1
-            if c is ']':
+            if c == ']':
                 square_bracket_count -= 1
-        if square_bracket_count is 0 and curly_bracket_count is 0:
+        if square_bracket_count == 0 and curly_bracket_count == 0:
             return index
         index += 1
     pass
