@@ -44,10 +44,10 @@ def post_function(url, header, data):
     return lambda session: session.client.post(url=url, headers=header, data=json.dumps(data))
 
 
-def append_query(url, querys):
+def append_query(url, queries):
     url_parts = list(urlparse.urlparse(url))
     query = dict(urlparse.parse_qsl(url_parts[4]))
-    query.update(querys)
+    query.update(queries)
     url_parts[4] = urlencode(query)
     return urlparse.urlunparse(url_parts)
 
