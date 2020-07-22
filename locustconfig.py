@@ -10,5 +10,6 @@ def get_tests():
 
 
 class MyUser(HttpUser):
-    wait_time = between(5, 15)
+    min_wait = 100
+    max_wait = 120
     tasks = get_tests()
