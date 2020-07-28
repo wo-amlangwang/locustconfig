@@ -1,5 +1,4 @@
 import json
-import logging
 import urllib.parse as urlparse
 from urllib.parse import urlencode
 
@@ -57,10 +56,8 @@ def parse(data_file_path):
     f = open(data_file_path, "r")
     lines = f.readlines()
     request_set = set()
-    logging.info(len(lines), "requests found")
     for line in lines:
         request_set.add(line)
-    logging.info(len(request_set), "distinct requests found")
     for line in request_set:
         elements = line.split()
         method = elements[DEFAULT_METHOD_INDEX]
