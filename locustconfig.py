@@ -1,6 +1,7 @@
 import common.parser
 import os
 from locust import HttpUser, task, between
+from locust.contrib.fasthttp import FastHttpUser
 
 
 def get_tests():
@@ -9,7 +10,11 @@ def get_tests():
     return p.reqDict
 
 
-class MyUser(HttpUser):
+class MyUser(FastHttpUser):
     min_wait = 100
     max_wait = 120
     tasks = get_tests()
+
+    @task(3)
+    def health(self):
+        self.client.get("/health")
