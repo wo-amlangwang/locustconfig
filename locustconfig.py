@@ -2,11 +2,10 @@ from common.parser import parse
 from os import getcwd
 from locust import task
 from locust.contrib.fasthttp import FastHttpUser
-import logging
 
 
 def get_tests():
-    return parse(getcwd() + "/access.log", logging.getLogger())
+    return parse(getcwd() + "/access.log")
 
 
 class MyUser(FastHttpUser):

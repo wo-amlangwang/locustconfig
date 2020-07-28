@@ -52,15 +52,15 @@ def append_query(url, queries):
     return urlparse.urlunparse(url_parts)
 
 
-def parse(data_file_path, lg):
+def parse(data_file_path):
     req_dict = {}
     f = open(data_file_path, "r")
     lines = f.readlines()
     request_set = set()
-    lg.info(len(lines), "requests found")
+    logging.info(len(lines), "requests found")
     for line in lines:
         request_set.add(line)
-    lg.info(len(request_set), "distinct requests found")
+    logging.info(len(request_set), "distinct requests found")
     for line in request_set:
         elements = line.split()
         method = elements[DEFAULT_METHOD_INDEX]
