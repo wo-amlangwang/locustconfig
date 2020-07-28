@@ -1,13 +1,12 @@
-import common.parser
-import os
-from locust import HttpUser, task, between
+from common.parser import parse
+from os import getcwd
+from locust import task
 from locust.contrib.fasthttp import FastHttpUser
+import logging
 
 
 def get_tests():
-    p = common.parser.Parser()
-    p.parse(os.getcwd() + "/access.log")
-    return p.reqDict
+    return parse(getcwd() + "/access.log", logging)
 
 
 class MyUser(FastHttpUser):
