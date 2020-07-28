@@ -6,7 +6,7 @@ import logging
 
 
 def get_tests():
-    return parse(getcwd() + "/access.log", logging)
+    return parse(getcwd() + "/access.log", logging.getLogger())
 
 
 class MyUser(FastHttpUser):
