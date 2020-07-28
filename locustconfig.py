@@ -15,6 +15,6 @@ class MyUser(FastHttpUser):
     max_wait = 120
     tasks = get_tests()
 
-    @task(3)
+    @task(1)
     def health(self):
         self.client.get("/health")
