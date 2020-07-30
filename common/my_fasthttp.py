@@ -35,7 +35,7 @@ class MyFastHttpSession(FastHttpSession):
         try:
             response.raise_for_status()
         except:
-            logger.info(path, headers)
+            logger.info(path + headers)
         return response
 
     def head(self, path, **kwargs):
