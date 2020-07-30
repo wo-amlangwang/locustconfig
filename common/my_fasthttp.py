@@ -31,7 +31,7 @@ class MyFastHttpSession(FastHttpSession):
 
     def get(self, path, **kwargs):
         """Sends a GET request"""
-        logger.log(1)
+        logger.info(1)
         return super().request("GET", path, **kwargs)
 
     def head(self, path, **kwargs):
