@@ -29,10 +29,14 @@ class MyFastHttpSession(FastHttpSession):
     def delete(self, path, **kwargs):
         return super().request("DELETE", path, **kwargs)
 
-    def get(self, path, **kwargs):
+    def get(self, path, headers, **kwargs):
         """Sends a GET request"""
-        logger.info(1)
-        return super().request("GET", path, **kwargs)
+        response = super().request("GET", path, headers=headers, **kwargs)
+        try:
+            response.raise_for_status()
+        except:
+            logger.info(path, headers)
+        return response
 
     def head(self, path, **kwargs):
         """Sends a HEAD request"""
