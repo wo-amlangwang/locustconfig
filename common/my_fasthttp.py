@@ -1,6 +1,7 @@
 from locust.contrib.fasthttp import FastHttpUser
 
 
+
 class MyUser(FastHttpUser):
 
     def get(self, path, headers, **kwargs):
