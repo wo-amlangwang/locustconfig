@@ -36,7 +36,7 @@ def find_json_end(json_parts, start_index):
 
 
 def get_function(url, header):
-    return lambda session: session.get(path=url, headers=header)
+    return lambda session: session.client.get(path=url, headers=header)
 
 
 def post_function(url, header, data):
