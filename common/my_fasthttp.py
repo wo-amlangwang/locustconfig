@@ -4,6 +4,7 @@ import logging
 
 logger = logging.getLogger(__name__)
 
+
 class MyFastHttpUser(FastHttpUser):
 
     def __init__(self, environment):
