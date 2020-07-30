@@ -36,11 +36,11 @@ def find_json_end(json_parts, start_index):
 
 
 def get_function(url, header):
-    return lambda session: session.client.get(url=url, headers=header)
+    return lambda session: session.client.get(path=url, headers=header)
 
 
 def post_function(url, header, data):
-    return lambda session: session.client.post(url=url, headers=header, data=json.dumps(data))
+    return lambda session: session.client.post(path=url, headers=header, data=json.dumps(data))
 
 
 def append_query(url, queries):
