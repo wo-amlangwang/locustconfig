@@ -1,6 +1,7 @@
 from locust.contrib.fasthttp import FastHttpUser, FastHttpSession
 from locust.env import Environment
 import logging
+import time
 
 logger = logging.getLogger(__name__)
 
@@ -31,16 +32,18 @@ class MyFastHttpSession(FastHttpSession):
 
     def get(self, path, headers, **kwargs):
         """Sends a GET request"""
+        start = time.time()
         response = super().request("GET", path, headers=headers, **kwargs)
+        end = time.time()
         try:
             response.raise_for_status()
         except:
-            logger.info(str(response.status_code) + ":" + path + ":" + str(headers))
+            logger.info(str(response.status_code) + ":" + str(end - start) + ":" + path + ":" + str(headers))
         return response
 
-    def head(self, path, **kwargs):
+    def head(self, path, headers, data, **kwargs):
         """Sends a HEAD request"""
-        return super().request("HEAD", path, **kwargs)
+        return super().request("HEAD", path, headers=headers, data=data **kwargs)
 
     def options(self, path, **kwargs):
         """Sends a OPTIONS request"""
